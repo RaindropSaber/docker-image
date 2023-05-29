@@ -1,9 +1,10 @@
 FROM raindropsaber/ubuntu
 
+RUN curl -fsSL https://code-server.dev/install.sh | sh 
 
-RUN curl -fsSL https://code-server.dev/install.sh | sh \
-    && code-server --install-extension ms-ceintl.vscode-language-pack-zh-hans
 
 COPY ./config.yaml .config/code-server/config.yaml
+ADD ./code-server.tgz .local/share/
+RUN sudo chown -R 1000:1000 /home/raindrop/.local/share/
 
-# code-server --auth none --bind-addr 0.0.0.0:8080 --locale zh-cn
+CMD ["-c","code-server"]

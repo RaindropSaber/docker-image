@@ -2,3 +2,4 @@ bind-addr: 0.0.0.0:8080
 auth: none
 password: 111111
 cert: false
+locale: zh-cn
